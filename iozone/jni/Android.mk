@@ -1,0 +1,48 @@
+LOCAL_PATH:= $(call my-dir)
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES:=\
+		iozone.c \
+		libbif.c
+
+LOCAL_CFLAGS := -O3 -g -Wall -Dunix -DHAVE_ANSIC_C  -DHAVE_PREAD \
+        -DNAME='"linux-arm"' -DLINUX_ARM \
+        -Dlinux -DANDROID -DNO_THREADS
+
+#LOCAL_C_INCLUDES += 
+
+#LOCAL_SHARED_LIBRARIES += libssl libcrypto
+
+#LOCAL_STATIC_LIBRARIES += libpcap
+
+LOCAL_MODULE_PATH := $(TARGET_OUT_OPTIONAL_EXECUTABLES)
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_MODULE := iozone
+
+include $(BUILD_EXECUTABLE)
+
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES:=\
+		fileop.c
+
+LOCAL_CFLAGS := -O3 -g -Wall -Dunix -DHAVE_ANSIC_C  -DHAVE_PREAD \
+        -DNAME='"linux-arm"' -DLINUX_ARM -DSHARED_MEM \
+        -Dlinux -D_LARGEFILE64_SOURCE -DANDROID
+
+#LOCAL_C_INCLUDES +=
+
+#LOCAL_SHARED_LIBRARIES += libssl libcrypto
+
+#LOCAL_STATIC_LIBRARIES += libpcap
+
+LOCAL_MODULE_PATH := $(TARGET_OUT_OPTIONAL_EXECUTABLES)
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_MODULE := fileop
+
+include $(BUILD_EXECUTABLE)
